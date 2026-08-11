@@ -1,0 +1,38 @@
+{
+  "label": "T0_start",
+  "slot": 81,
+  "delinquentUpgrader": {
+    "state": "IteratingStakes",
+    "visitedCount": 0,
+    "totalActiveBalance": "0",
+    "totalDelinquentBalance": "0"
+  },
+  "stakeCount": 2,
+  "totalActiveBalance": "55000000000",
+  "stakes": [
+    {
+      "index": 0,
+      "stakeAccount": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+      "amount": "50000000000",
+      "status": "Unknown",
+      "emergency": false
+    },
+    {
+      "index": 1,
+      "stakeAccount": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+      "amount": "5000000000",
+      "status": "Unknown",
+      "emergency": false
+    }
+  ],
+  "validator0": {
+    "count": 1,
+    "itemSize": 61,
+    "validatorAccount": "BE3yLab9tuxguQkHZb6YzjP2Ys7tuNPtXF78ptDC6oNx",
+    "activeBalance": "55000000000",
+    "score": 1000,
+    "lastStakeDeltaEpoch": "0",
+    "duplicationFlagBumpSeed": 255,
+    "delinquentUpgraderActiveBalance": "0"
+  }
+}

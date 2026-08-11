@@ -1,0 +1,285 @@
+{
+  "updateOk": true,
+  "updateSig": "HdDkG33Lot5CnDPTeuutCKYYxR7UZFbTeGohhNRYgxAMg4xBzcqsmrtFpi1tsJN4XkhwUyJZUGzxbVo2o5eefYR",
+  "updateErr": null,
+  "finalizeOk": false,
+  "finalizeErr": {
+    "message": "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: Program failed to complete",
+    "logs": [
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+      "Program log: Instruction: FinalizeDelinquentUpgrade",
+      "Program log: panicked at 'attempt to subtract with overflow', programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:38:25",
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 7680 of 200000 compute units",
+      "Program failed to complete: BPF program panicked",
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: Program failed to complete"
+    ]
+  },
+  "recoveries": [
+    {
+      "ix": "finalize_delinquent_upgrade",
+      "ok": false,
+      "error": "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: Program failed to complete",
+      "logs": [
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+        "Program log: Instruction: FinalizeDelinquentUpgrade",
+        "Program log: panicked at 'attempt to subtract with overflow', programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:38:25",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 7680 of 200000 compute units",
+        "Program failed to complete: BPF program panicked",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: Program failed to complete"
+      ]
+    },
+    {
+      "ix": "update_active",
+      "ok": false,
+      "error": "AnchorError caused by account: stake_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.",
+      "logs": [
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+        "Program log: Instruction: UpdateActive",
+        "Program log: AnchorError caused by account: stake_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 10849 of 200000 compute units",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0xbc4"
+      ]
+    },
+    {
+      "ix": "update_deactivated_again",
+      "ok": false,
+      "error": "AnchorError caused by account: stake_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.",
+      "logs": [
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+        "Program log: Instruction: UpdateDeactivated",
+        "Program log: AnchorError caused by account: stake_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 11405 of 200000 compute units",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0xbc4"
+      ]
+    },
+    {
+      "ix": "deposit_liq_pool_note",
+      "ok": null,
+      "note": "is_done gates stake-moving ops; liquid deposit/unstake checked separately in report"
+    }
+  ],
+  "assertions": [
+    {
+      "name": "T0_fsm_iterating_validators",
+      "pass": true
+    },
+    {
+      "name": "T1_update_succeeded",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "T2_active_decreased_or_zero",
+      "pass": true,
+      "detail": {
+        "before": "50000000000",
+        "after": "0"
+      }
+    },
+    {
+      "name": "T2_shadow_unchanged",
+      "pass": true,
+      "detail": {
+        "before": "50000000000",
+        "after": "50000000000"
+      }
+    },
+    {
+      "name": "T2_active_lt_shadow",
+      "pass": true
+    },
+    {
+      "name": "T3_finalize_failed",
+      "pass": true,
+      "detail": {
+        "message": "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: Program failed to complete",
+        "logs": [
+          "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+          "Program log: Instruction: FinalizeDelinquentUpgrade",
+          "Program log: panicked at 'attempt to subtract with overflow', programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:38:25",
+          "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 7680 of 200000 compute units",
+          "Program failed to complete: BPF program panicked",
+          "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: Program failed to complete"
+        ]
+      }
+    },
+    {
+      "name": "T4_still_iterating_validators",
+      "pass": true
+    },
+    {
+      "name": "T4_matches_T2_validator_active",
+      "pass": true
+    },
+    {
+      "name": "T4_matches_T2_shadow",
+      "pass": true
+    },
+    {
+      "name": "T6_still_stuck",
+      "pass": true
+    }
+  ],
+  "t0": {
+    "label": "T0_before_update_deactivated",
+    "slot": 217,
+    "epoch": 6,
+    "delinquentUpgrader": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    },
+    "stakeCount": 1,
+    "validatorCount": 1,
+    "totalActiveBalance": "50000000000",
+    "emergencyCoolingDown": "0",
+    "availableReserveBalance": "0",
+    "msolSupply": "50000000000",
+    "msolPrice": "4294967296",
+    "paused": false,
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "GoZjfnqHWBZeShd4iyhdeAutJeYJZgB6e1uLim4KwkLm",
+      "activeBalance": "50000000000",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "11",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    },
+    "stake0rec": {
+      "count": 1,
+      "itemSize": 50,
+      "stakeAccount": "XQPjet7HRZsBEcBeeHyPnHqSyXtYWLYyeNXwbmyrqHJ",
+      "lastUpdateDelegatedLamports": "50000000000",
+      "lastUpdateEpoch": "11",
+      "isEmergencyUnstaking": false,
+      "lastUpdateStatus": "Active"
+    },
+    "stake0Exists": true,
+    "stake0Lamports": 50002282880,
+    "stake0Owner": "Stake11111111111111111111111111111111111111"
+  },
+  "t2": {
+    "label": "T2_after_update_deactivated",
+    "slot": 218,
+    "epoch": 6,
+    "delinquentUpgrader": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    },
+    "stakeCount": 0,
+    "validatorCount": 1,
+    "totalActiveBalance": "0",
+    "emergencyCoolingDown": "0",
+    "availableReserveBalance": "50000000000",
+    "msolSupply": "50000000000",
+    "msolPrice": "4294967296",
+    "paused": false,
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "GoZjfnqHWBZeShd4iyhdeAutJeYJZgB6e1uLim4KwkLm",
+      "activeBalance": "0",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "11",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    },
+    "stake0rec": null,
+    "stake0Exists": false,
+    "stake0Lamports": 0,
+    "stake0Owner": null
+  },
+  "t4": {
+    "label": "T4_after_finalize",
+    "slot": 218,
+    "epoch": 6,
+    "delinquentUpgrader": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    },
+    "stakeCount": 0,
+    "validatorCount": 1,
+    "totalActiveBalance": "0",
+    "emergencyCoolingDown": "0",
+    "availableReserveBalance": "50000000000",
+    "msolSupply": "50000000000",
+    "msolPrice": "4294967296",
+    "paused": false,
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "GoZjfnqHWBZeShd4iyhdeAutJeYJZgB6e1uLim4KwkLm",
+      "activeBalance": "0",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "11",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    },
+    "stake0rec": null,
+    "stake0Exists": false,
+    "stake0Lamports": 0,
+    "stake0Owner": null
+  },
+  "t6": {
+    "label": "T6_after_recovery",
+    "slot": 218,
+    "epoch": 6,
+    "delinquentUpgrader": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    },
+    "stakeCount": 0,
+    "validatorCount": 1,
+    "totalActiveBalance": "0",
+    "emergencyCoolingDown": "0",
+    "availableReserveBalance": "50000000000",
+    "msolSupply": "50000000000",
+    "msolPrice": "4294967296",
+    "paused": false,
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "GoZjfnqHWBZeShd4iyhdeAutJeYJZgB6e1uLim4KwkLm",
+      "activeBalance": "0",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "11",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    },
+    "stake0rec": null,
+    "stake0Exists": false,
+    "stake0Lamports": 0,
+    "stake0Owner": null
+  },
+  "log": [
+    {
+      "step": "T1_update_deactivated",
+      "ok": true,
+      "detail": {
+        "signature": "HdDkG33Lot5CnDPTeuutCKYYxR7UZFbTeGohhNRYgxAMg4xBzcqsmrtFpi1tsJN4XkhwUyJZUGzxbVo2o5eefYR"
+      },
+      "slot": null
+    },
+    {
+      "step": "T3_finalize_delinquent_upgrade",
+      "ok": false,
+      "detail": {
+        "message": "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: Program failed to complete",
+        "logs": [
+          "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+          "Program log: Instruction: FinalizeDelinquentUpgrade",
+          "Program log: panicked at 'attempt to subtract with overflow', programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:38:25",
+          "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 7680 of 200000 compute units",
+          "Program failed to complete: BPF program panicked",
+          "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: Program failed to complete"
+        ]
+      },
+      "slot": null
+    }
+  ]
+}

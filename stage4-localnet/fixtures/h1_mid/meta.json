@@ -1,0 +1,22 @@
+{
+  "state": "jMLvt7PZZgwSkvjoFExAJAbaCVx1wGUJiXGqY6ygaWT",
+  "validator_list": "8UUJsCco7d6VT7bXNdrqf9RKhb77FvcTNaMfbaW93c8i",
+  "stake_list": "5NEGxakUTwmdUxDmfSLQtVDyspVuMjHPt1w2YjUxvk8j",
+  "stakes": [
+    {
+      "pubkey": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+      "amount": 50000000000
+    },
+    {
+      "pubkey": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+      "amount": 5000000000
+    }
+  ],
+  "stake_count": 2,
+  "msolMint": "CLpGp8jxvCPRP2MBqB3m423MvecQNKbJKW11HnGL9xir",
+  "treasuryMsol": "C8M2oQfgLV66aeJrrR1ToHD2vEjpjWRFC4y9F7TrPZ5h",
+  "operational": "3RwMvHNpvKaxTe8hDPat93tJt3pEcZMpqbnZqDRwsWKd",
+  "reservePda": "97iG56sLy24991jEit8PLk7RBCNd6t2p3BCVmE8m2vAx",
+  "s0": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+  "s1": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6"
+}

@@ -1,0 +1,32 @@
+{
+  "label": "T6_after_recovery",
+  "slot": 218,
+  "epoch": 6,
+  "delinquentUpgrader": {
+    "state": "IteratingValidators",
+    "visitedCount": 0,
+    "delinquentBalanceLeft": "0"
+  },
+  "stakeCount": 0,
+  "validatorCount": 1,
+  "totalActiveBalance": "0",
+  "emergencyCoolingDown": "0",
+  "availableReserveBalance": "50000000000",
+  "msolSupply": "50000000000",
+  "msolPrice": "4294967296",
+  "paused": false,
+  "validator0": {
+    "count": 1,
+    "itemSize": 61,
+    "validatorAccount": "GoZjfnqHWBZeShd4iyhdeAutJeYJZgB6e1uLim4KwkLm",
+    "activeBalance": "0",
+    "score": 1000,
+    "lastStakeDeltaEpoch": "11",
+    "duplicationFlagBumpSeed": 255,
+    "delinquentUpgraderActiveBalance": "50000000000"
+  },
+  "stake0rec": null,
+  "stake0Exists": false,
+  "stake0Lamports": 0,
+  "stake0Owner": null
+}

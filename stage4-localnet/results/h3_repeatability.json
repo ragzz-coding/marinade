@@ -1,0 +1,47 @@
+[
+  {
+    "run": 1,
+    "exit": 0,
+    "all_pass": true,
+    "updateOk": true,
+    "finalizeOk": false,
+    "finalize_panic": true,
+    "t2_active": "0",
+    "t2_shadow": "50000000000",
+    "t4_fsm": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    }
+  },
+  {
+    "run": 2,
+    "exit": 0,
+    "all_pass": true,
+    "updateOk": true,
+    "finalizeOk": false,
+    "finalize_panic": true,
+    "t2_active": "0",
+    "t2_shadow": "50000000000",
+    "t4_fsm": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    }
+  },
+  {
+    "run": 3,
+    "exit": 0,
+    "all_pass": true,
+    "updateOk": true,
+    "finalizeOk": false,
+    "finalize_panic": true,
+    "t2_active": "0",
+    "t2_shadow": "50000000000",
+    "t4_fsm": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    }
+  }
+]

@@ -1,0 +1,78 @@
+{
+  "fsmBefore": {
+    "iteratingValidators": {
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "00"
+    }
+  },
+  "fsmAfter": {
+    "iteratingValidators": {
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "00"
+    }
+  },
+  "results": [
+    {
+      "name": "finalize_delinquent_upgrade",
+      "ok": false,
+      "error": "failed to send transaction: Transaction simulation failed: Error processing Instruction 0: Program failed to complete",
+      "logs": [
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+        "Program log: Instruction: FinalizeDelinquentUpgrade",
+        "Program log: panicked at 'attempt to subtract with overflow', programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:38:25",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 7680 of 200000 compute units",
+        "Program failed to complete: BPF program panicked",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: Program failed to complete"
+      ]
+    },
+    {
+      "name": "deposit_sol",
+      "ok": true,
+      "sig": "62SuG17ciXYgeeTo6YE2eRvK8KWuFwnwc9xQFhJKRpjxAcCAByCcJFcB5hAtJzr6asnaiETYMoMh54fBMcFsiyPZ"
+    },
+    {
+      "name": "stake_reserve",
+      "ok": false,
+      "error": "AnchorError thrown in programs/marinade-finance/src/instructions/crank/stake_reserve.rs:98. Error Code: DelinquentUpgraderIsNotDone. Error Number: 6088. Error Message: Delinquent upgrader is not done.",
+      "logs": [
+        "Program log: Instruction: StakeReserve",
+        "Program 11111111111111111111111111111111 invoke [2]",
+        "Program 11111111111111111111111111111111 success",
+        "Program log: AnchorError thrown in programs/marinade-finance/src/instructions/crank/stake_reserve.rs:98. Error Code: DelinquentUpgraderIsNotDone. Error Number: 6088. Error Message: Delinquent upgrader is not done.",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 25246 of 200000 compute units",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0x17c8"
+      ]
+    },
+    {
+      "name": "add_validator_gated",
+      "ok": false,
+      "error": "AnchorError caused by account: duplication_flag. Error Code: ConstraintSeeds. Error Number: 2006. Error Message: A seeds constraint was violated.\nProgram log: Left:\nProgram log: 2zGLmqRATrhwjsv7gCT9BPQrXpVXPvft31CZwccvBigW\nProgram log: Right:\nProgram log: AGyT8Sn7EnAT1ycLNbFCdKBPPWNFf9VVgYJXV4b7VS3f",
+      "logs": [
+        "Program log: Left:",
+        "Program log: 2zGLmqRATrhwjsv7gCT9BPQrXpVXPvft31CZwccvBigW",
+        "Program log: Right:",
+        "Program log: AGyT8Sn7EnAT1ycLNbFCdKBPPWNFf9VVgYJXV4b7VS3f",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 15601 of 200000 compute units",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0x7d6"
+      ]
+    },
+    {
+      "name": "liquid_unstake",
+      "ok": false,
+      "error": "AnchorError thrown in programs/marinade-finance/src/instructions/liq_pool/liquid_unstake.rs:102. Error Code: InsufficientLiquidity. Error Number: 6026. Error Message: Insufficient Liquidity in the Liquidity Pool.",
+      "logs": [
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+        "Program log: Instruction: LiquidUnstake",
+        "Program log: msol_fee 3000000",
+        "Program log: AnchorError thrown in programs/marinade-finance/src/instructions/liq_pool/liquid_unstake.rs:102. Error Code: InsufficientLiquidity. Error Number: 6026. Error Message: Insufficient Liquidity in the Liquidity Pool.",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 20054 of 200000 compute units",
+        "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0x178a"
+      ]
+    },
+    {
+      "name": "order_unstake",
+      "ok": true,
+      "sig": "3oeT2y2i6fnB3eh36AB5uW2RHbtDuBzS9aaVD3Q8ackDjXRoFNoG931QAc6AB8kaxH3axHeq3KPY7KQb9sLU2QxP"
+    }
+  ]
+}
