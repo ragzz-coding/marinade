@@ -1,0 +1,199 @@
+{
+  "updateDeactOk": false,
+  "updateDeactErr": {
+    "message": "AnchorError thrown in programs/marinade-finance/src/instructions/crank/update.rs:282. Error Code: UpgradingInvariantViolation. Error Number: 6087. Error Message: Upgrading invariant violation.\nProgram log: Left: 50000000000\nProgram log: Right: 5000000000",
+    "logs": [
+      "Program log: protocol_rewards_fee 0",
+      "Program Stake11111111111111111111111111111111111111 invoke [2]",
+      "Program Stake11111111111111111111111111111111111111 success",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program log: AnchorError thrown in programs/marinade-finance/src/instructions/crank/update.rs:282. Error Code: UpgradingInvariantViolation. Error Number: 6087. Error Message: Upgrading invariant violation.",
+      "Program log: Left: 50000000000",
+      "Program log: Right: 5000000000",
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 41819 of 200000 compute units",
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0x17c7"
+    ]
+  },
+  "finalizeOk": false,
+  "finalizeErr": {
+    "message": "AnchorError thrown in programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:56. Error Code: UpgradingInvariantViolation. Error Number: 6087. Error Message: Upgrading invariant violation.",
+    "logs": [
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD invoke [1]",
+      "Program log: Instruction: FinalizeDelinquentUpgrade",
+      "Program log: AnchorError thrown in programs/marinade-finance/src/instructions/crank/finalize_delinquent_upgrade.rs:56. Error Code: UpgradingInvariantViolation. Error Number: 6087. Error Message: Upgrading invariant violation.",
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD consumed 7652 of 200000 compute units",
+      "Program MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD failed: custom program error: 0x17c7"
+    ]
+  },
+  "updateS1Ok": true,
+  "updateS1Err": null,
+  "assertions": [
+    {
+      "name": "T3_transitioned_or_ready_for_finalize",
+      "pass": false
+    },
+    {
+      "name": "T4_done",
+      "pass": false
+    },
+    {
+      "name": "T4_unknown_stake_remains",
+      "pass": true
+    },
+    {
+      "name": "T5_update_active_on_unknown_fails",
+      "pass": false,
+      "detail": null
+    },
+    {
+      "name": "T5_still_done",
+      "pass": false
+    },
+    {
+      "name": "T5_unknown_still_present",
+      "pass": false
+    }
+  ],
+  "t2": {
+    "label": "T2_reloaded_s0_deactivated",
+    "delinquentUpgrader": {
+      "state": "IteratingStakes",
+      "visitedCount": 1,
+      "totalActiveBalance": "50000000000",
+      "totalDelinquentBalance": "0"
+    },
+    "stakeCount": 2,
+    "stakes": [
+      {
+        "index": 0,
+        "stakeAccount": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+        "amount": "50000000000",
+        "status": "Active"
+      },
+      {
+        "index": 1,
+        "stakeAccount": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+        "amount": "5000000000",
+        "status": "Unknown"
+      }
+    ],
+    "totalActiveBalance": "55000000000",
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "BE3yLab9tuxguQkHZb6YzjP2Ys7tuNPtXF78ptDC6oNx",
+      "activeBalance": "55000000000",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "0",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    }
+  },
+  "t3": {
+    "label": "T3_after_update_deactivated_s0",
+    "delinquentUpgrader": {
+      "state": "IteratingStakes",
+      "visitedCount": 1,
+      "totalActiveBalance": "50000000000",
+      "totalDelinquentBalance": "0"
+    },
+    "stakeCount": 2,
+    "stakes": [
+      {
+        "index": 0,
+        "stakeAccount": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+        "amount": "50000000000",
+        "status": "Active"
+      },
+      {
+        "index": 1,
+        "stakeAccount": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+        "amount": "5000000000",
+        "status": "Unknown"
+      }
+    ],
+    "totalActiveBalance": "55000000000",
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "BE3yLab9tuxguQkHZb6YzjP2Ys7tuNPtXF78ptDC6oNx",
+      "activeBalance": "55000000000",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "0",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    }
+  },
+  "t4": {
+    "label": "T4_after_finalize",
+    "delinquentUpgrader": {
+      "state": "IteratingStakes",
+      "visitedCount": 1,
+      "totalActiveBalance": "50000000000",
+      "totalDelinquentBalance": "0"
+    },
+    "stakeCount": 2,
+    "stakes": [
+      {
+        "index": 0,
+        "stakeAccount": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+        "amount": "50000000000",
+        "status": "Active"
+      },
+      {
+        "index": 1,
+        "stakeAccount": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+        "amount": "5000000000",
+        "status": "Unknown"
+      }
+    ],
+    "totalActiveBalance": "55000000000",
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "BE3yLab9tuxguQkHZb6YzjP2Ys7tuNPtXF78ptDC6oNx",
+      "activeBalance": "55000000000",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "0",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "50000000000"
+    }
+  },
+  "t5": {
+    "label": "T5_after_update_active_s1_attempt",
+    "delinquentUpgrader": {
+      "state": "IteratingValidators",
+      "visitedCount": 0,
+      "delinquentBalanceLeft": "0"
+    },
+    "stakeCount": 2,
+    "stakes": [
+      {
+        "index": 0,
+        "stakeAccount": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+        "amount": "50000000000",
+        "status": "Active"
+      },
+      {
+        "index": 1,
+        "stakeAccount": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+        "amount": "5000000000",
+        "status": "Active"
+      }
+    ],
+    "totalActiveBalance": "55000000000",
+    "validator0": {
+      "count": 1,
+      "itemSize": 61,
+      "validatorAccount": "BE3yLab9tuxguQkHZb6YzjP2Ys7tuNPtXF78ptDC6oNx",
+      "activeBalance": "55000000000",
+      "score": 1000,
+      "lastStakeDeltaEpoch": "0",
+      "duplicationFlagBumpSeed": 255,
+      "delinquentUpgraderActiveBalance": "55000000000"
+    }
+  },
+  "verdict_note": "Modeled H1-variant sequence (update_active visited stake \u2192 update_deactivated same stake \u2192 visited_count==stake_count with Unknown remaining) fails at check_delinquent_upgrade_state_progression with UpgradingInvariantViolation (FSM total_active_balance 50e9 != validator_system.total_active_balance 5e9). Transaction aborts; no permanent Unknown-into-Done. Continuing update_active on remaining Unknown succeeds.",
+  "localnet_verdict": "PROVEN NOT VULNERABLE"
+}

@@ -1,0 +1,24 @@
+[package]
+name = "stage4-localnet"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anchor-lang = "0.27.0"
+anchor-spl = { version = "0.27.0", default-features = false, features = ["stake", "mint", "token", "spl-token"] }
+marinade-finance = { path = "../liquid-staking-program-main/programs/marinade-finance", features = ["no-entrypoint"] }
+
+[dev-dependencies]
+solana-program-test = "=1.14.29"
+solana-sdk = "=1.14.29"
+solana-program = "=1.14.29"
+spl-token = { version = "=3.5.0", features = ["no-entrypoint"] }
+tokio = { version = "1.14.1", features = ["full"] }
+time = "=0.3.36"
+console = { version = "=0.15.8", features = ["std"] }
+indicatif = "=0.17.8"
+
+[[test]]
+name = "h3_finalize_after_emergency"
+path = "tests/h3_finalize_after_emergency.rs"

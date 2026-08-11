@@ -1,0 +1,14 @@
+{
+  "state": "jMLvt7PZZgwSkvjoFExAJAbaCVx1wGUJiXGqY6ygaWT",
+  "stakeList": "5NEGxakUTwmdUxDmfSLQtVDyspVuMjHPt1w2YjUxvk8j",
+  "validatorList": "8UUJsCco7d6VT7bXNdrqf9RKhb77FvcTNaMfbaW93c8i",
+  "stake0": "DnC4YVc2x4Scc4HmHXvJwRmGd3HFXXASUGuK1JzqCVig",
+  "stake1": "AhtG65QSK4DvLXK6wCy7j2mp3VWV8p5GV4dBsSUiXCF6",
+  "vote": "BE3yLab9tuxguQkHZb6YzjP2Ys7tuNPtXF78ptDC6oNx",
+  "msolMint": "CLpGp8jxvCPRP2MBqB3m423MvecQNKbJKW11HnGL9xir",
+  "reservePda": "97iG56sLy24991jEit8PLk7RBCNd6t2p3BCVmE8m2vAx",
+  "treasuryMsol": "C8M2oQfgLV66aeJrrR1ToHD2vEjpjWRFC4y9F7TrPZ5h",
+  "operational": "3RwMvHNpvKaxTe8hDPat93tJt3pEcZMpqbnZqDRwsWKd",
+  "programId": "MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD",
+  "stakeCount": 2
+}
