@@ -1,11 +1,36 @@
 # STAGE5_ATTACK_SURFACE — Marinade User / LiqPool / Delayed-Unstake Paths
 
-Scope: Stage 5 attacker-first review of permissionless value paths only.  
-Base: `programs/marinade-finance/src/{instructions/user,instructions/liq_pool,instructions/delayed_unstake,calc.rs,checks.rs,state/mod.rs}`.  
-Ignored by request: delinquent-upgrader H3/H5/H1.
+Marinade liquid-staking program. Attacker-first. Closed: H3/H5/H1/H1-variant.
+
+## 0. Full instruction classification
+
+| Instruction | Class | Signer(s) | Notes |
+|-------------|-------|-----------|-------|
+| `initialize` | Admin setup | creator | FSM=`Done` |
+| `change_authority` / `config_*` / `realloc_*` | Admin | `admin_authority` | |
+| `pause` / `resume` | Pause | `pause_authority` | |
+| `add/remove_validator` / `set_validator_score` / `config_validator_system` / `emergency_unstake` / `partial_unstake` | Manager | `manager_authority` | several also `is_done()` |
+| `deposit` / `deposit_stake_account` / `liquid_unstake` / `add_liquidity` / `remove_liquidity` / `order_unstake` / `withdraw_stake_account` | User | user/token/stake auths | |
+| `claim` | Permissionless | none | beneficiary fixed |
+| `stake_reserve` / `deactivate_stake` / `update_active` / `update_deactivated` / `merge_stakes` / `create_canonical_stake` / `finalize_delinquent_upgrade` | Permissionless crank | rent payer or none | see constraints |
+
+**Bounty surface** = User + Permissionless. Manager/Admin out of model.
+
+### PDA seeds (quick ref)
+
+| PDA | Seeds |
+|-----|-------|
+| reserve | `[state, b"reserve"]` |
+| mSOL mint auth | `[state, b"st_mint"]` |
+| stake deposit/withdraw | `[state, b"deposit"]` / `[state, b"withdraw"]` |
+| LP sol leg | `[state, b"liq_sol"]` |
+| LP mSOL leg auth | `[state, b"liq_st_sol_authority"]` |
+| dup flag | `[state, b"unique_validator", vote]` |
+| canonical stake | `[state, validator, b"canonical_stake"]` |
+
+Crank stake/validator binding: `get_checked` / `check_stake_amount_and_validator` — unprivileged index substitution does not corrupt accounting.
 
 ---
-
 ## Shared primitives (pricing / checks)
 
 ### `calc.rs`
