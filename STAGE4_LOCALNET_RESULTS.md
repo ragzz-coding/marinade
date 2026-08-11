@@ -97,12 +97,31 @@ No permissionless path observed that clears `active < shadow` or advances FSM to
 
 | Role | Required? |
 | ---- | --------- |
-| Ordinary user / permissionless crank | **Yes** for T1 + T3 |
+| Ordinary user / permissionless crank | Can run `update_deactivated` / `finalize` **only if** preconditions already exist |
 | Stake account owner | No (Marinade PDA authority) |
-| Validator authority | Not for the crank; native force-deactivate is external Solana behavior |
-| Manager / admin / governance | **No** for the emergency+finalize sequence |
+| Validator identity / vote key | **Required** to *create* delinquency; unprivileged attacker does not have this for Marinade-set validators |
+| Manager / admin / governance | Needed to `add_validator` (and `add_validator` is also `is_done()`-gated) |
 
-Reaching `IteratingValidators` itself is a post-upgrade protocol phase (or equivalent state), not an attacker-created FSM from fresh `Done` via a public ix.
+### Attacker Reachability via DeactivateDelinquent
+
+Solana `StakeInstruction::DeactivateDelinquent` (1.14.29):
+
+- Permissionless to **invoke**, but only succeeds if the delegated vote has not voted for ≥ `MINIMUM_DELINQUENT_EPOCHS_FOR_DEACTIVATION` (**5 epochs**, ~15 days mainnet)
+- Needs a reference vote that *has* voted in that window
+- Does **not** let an attacker stop a healthy validator from voting
+
+Unprivileged induction paths:
+
+| Path | Feasible? | Why |
+| ---- | --------- | --- |
+| Stop someone else’s Marinade validator from voting | **No** | Requires compromise/DoS of validator identity; not a program attacker capability |
+| Add own vote to Marinade set, then go offline 5 epochs | **No** | `add_validator` needs `validator_manager_authority` and `is_done()` — blocked in upgrade window; outside window needs manager privilege |
+| Wait ~15 days after going delinquent *during* open migration | **No** | Honest permissionless cranks finish `IteratingStakes → finalize → Done` in normal operation long before 5 epochs; attacker cannot hold the window open |
+| Race `DeactivateDelinquent` on a vote **already** 5-epoch delinquent still in the set with still-active stake, only after FSM reaches `IteratingValidators` | Not unprivileged-induced | Requires pre-existing operational failure (delinquent validator left in set). Marinade docs note delinquents are score-bot removed under normal ops. Not attacker-manufactured |
+
+H3 needs: stake still `Active` through Stakes crank → then native deactivation **during** `IteratingValidators` → emergency `update_deactivated` → broken finalize. That ordering plus 5-epoch delinquency cannot be created by an unprivileged actor against a normally operated upgrade.
+
+**Conclusion:** BPF bug is real under artificial preconditions; **not an Immunefi-grade unprivileged exploit**. Mark **NON-BOUNTY-GRADE** and stop.
 
 ## Funds Affected
 
@@ -121,17 +140,13 @@ Permanent inability to complete delinquent upgrade and to run stake-management i
 
 ## Immunefi Classification
 
-Maps most closely to:
-
-- **High — temporary freezing of funds excluding DOS** is a poor fit if the freeze is permanent for gated paths.
-- **Critical — permanent freezing of funds**: only if those gated paths are considered necessary to access user funds. Delayed unstake still works for mSOL holders; stake-account withdrawal and re-stake are frozen.
-
-**Recommended: High** (permanent operational freeze of stake-moving / upgrade finalization; not demonstrated direct theft; mSOL delayed exit remains). Escalate to Critical only if Marinade scope treats inability to restake/deactivate/withdraw-stake as permanent freezing of user funds despite `order_unstake`.
+**Out of scope / non-bounty-grade** for unprivileged attacker model: required deactivation cannot be intentionally induced; depends on upgrade window + pre-existing 5-epoch validator delinquency (or equivalent privileged/environmental conditions), not on attacker-controlled Marinade/stake instructions alone.
 
 ## Verdict
 
 ```text
-PROVEN VULNERABLE
+NON-BOUNTY-GRADE
+(BPF path demonstrated under patched preconditions; unprivileged DeactivateDelinquent induction infeasible)
 ```
 
 ### Repeatability
