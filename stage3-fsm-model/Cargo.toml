@@ -1,0 +1,12 @@
+[package]
+name = "marinade-stage3-fsm-model"
+version = "0.1.0"
+edition = "2021"
+description = "Pure-Rust model of Marinade delinquent-upgrader arithmetic for Stage 3 hypothesis tests. NOT the on-chain program."
+publish = false
+
+[profile.release]
+overflow-checks = true
+
+[profile.test]
+overflow-checks = true
