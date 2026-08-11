@@ -4,8 +4,14 @@
 
 | Hypothesis | Model result | Localnet result | Attacker | Impact | Confidence |
 | ---------- | ------------ | --------------- | -------- | ------ | ---------- |
-| H3         | MODEL-PROVEN VULNERABLE | **PROVEN VULNERABLE** | Permissionless crank (after delinquent-upgrader `IteratingValidators` + on-chain stake deactivation) | Permanent stall of `is_done()`-gated ops; mSOL deposit / delayed unstake still work; SOL moved to reserve | **High** |
+| H3         | MODEL-PROVEN VULNERABLE | BPF path real, but **NON-BOUNTY-GRADE** | Unprivileged actor **cannot** induce required stake deactivation | N/A for bounty | **High** |
 | H1-variant | MODEL-PROVEN | **PROVEN NOT VULNERABLE** | N/A (sequence aborts) | None for modeled path | **High** |
+
+### Bounty gate (DeactivateDelinquent feasibility)
+
+**Verdict: H3 is not bounty-grade.** An unprivileged attacker cannot intentionally induce or influence validator delinquency enough to make H3 reachable during a legitimate upgrade/migration window.
+
+See **H3 → Attacker Reachability via DeactivateDelinquent** below.
 
 ---
 
